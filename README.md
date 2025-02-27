@@ -902,11 +902,3 @@ AutoFarmTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
     end,
 })
-
-AutoAimbotPCTab:CreateButton({
-    Name = "Aimbot Mobile",
-    Callback = function()
-        -- Executa o loadstring para ativar o script de Auto Farm
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/edu987456123/aimbotrmob/refs/heads/main/README.md"))()
-    end,
-})
