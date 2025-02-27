@@ -44,7 +44,7 @@ local Tab = Window:CreateTab("Aimbot-PC") -- Icon ID (optional)
 local Section11 = Tab:CreateSection("aim config")
 -- Toggle para habilitar/desabilitar o Aimbot
 Tab:CreateToggle({
-    Name = "ativar aimbot",
+    Name = "ativar aimbot (PC)",
     CurrentValue = getgenv().Aimbot.Settings.Enabled == true, -- Garante que seja true ou false
     Flag = "AimbotEnabled",
     Callback = function(Value)
@@ -943,5 +943,16 @@ Players.PlayerAdded:Connect(function(player)
         expandHitbox(character)
     end)
 end)
+    end,
+})
+
+local Section11 = Tab:CreateSection("mobile")
+-- Toggle para habilitar/desabilitar o Aimbot
+Tab:CreateToggle({
+    Name = "ativar aimbot (Mobile)",
+    CurrentValue = getgenv().Aimbot.Settings.Enabled == true, -- Garante que seja true ou false
+    Flag = "AimbotEnabled",
+    Callback = function(Value)
+        getgenv().Aimbot.Settings.Enabled = Value
     end,
 })
