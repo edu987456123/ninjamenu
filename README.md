@@ -902,3 +902,46 @@ AutoFarmTab:CreateButton({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
     end,
 })
+
+AutoFarmTab:CreateButton({
+    Name = "Hit Box",
+    Callback = function()
+        local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Configuração
+local HitboxSize = Vector3.new(5, 5, 5) -- Tamanho da nova hitbox (5 vezes maior)
+local TargetPart = "Head" -- Parte do personagem que terá a hitbox expandida
+
+-- Função para expandir a hitbox
+local function expandHitbox(character)
+    local target = character:FindFirstChild(TargetPart)
+    if target and target:IsA("BasePart") then
+        target.Size = HitboxSize
+        target.Transparency = 0.5 -- Torna a hitbox visível para depuração (opcional)
+        target.Massless = true -- Reduz o peso da parte
+        target.CanCollide = false -- Evita colisões
+    end
+end
+
+-- Aplica a expansão de hitbox para todos os jogadores
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        local character = player.Character or player.CharacterAdded:Wait()
+        expandHitbox(character)
+
+        -- Monitora a recriação do personagem
+        player.CharacterAdded:Connect(function(newCharacter)
+            expandHitbox(newCharacter)
+        end)
+    end
+end
+
+-- Monitora novos jogadores entrando no jogo
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        expandHitbox(character)
+    end)
+end)
+    end,
+})
