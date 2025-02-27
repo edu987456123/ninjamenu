@@ -946,13 +946,3 @@ end)
     end,
 })
 
-local Section11 = Tab:CreateSection("mobile")
--- Toggle para habilitar/desabilitar o Aimbot
-Tab:CreateToggle({
-    Name = "ativar aimbot (Mobile)",
-    CurrentValue = getgenv().Aimbot.Settings.Enabled == true, -- Garante que seja true ou false
-    Flag = "AimbotEnabled",
-    Callback = function(Value)
-        getgenv().Aimbot.Settings.Enabled = Value
-    end,
-})
