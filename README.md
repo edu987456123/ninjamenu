@@ -905,6 +905,8 @@ AutoFarmTab:CreateButton({
 
 AutoFarmTab:CreateButton({
     Name = "Hit Box",
+    CurrentValue = getgenv().Aimbot.Settings.HitBox == true, -- Garante que seja true ou false
+    Flag = "HitBox",
     Callback = function()
         local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
